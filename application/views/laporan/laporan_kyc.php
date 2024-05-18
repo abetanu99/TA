@@ -71,86 +71,86 @@ $jsonData = json_encode($data);
 					document.addEventListener('DOMContentLoaded', function () {
 						var phpData = <?php echo $jsonData; ?>;
 						
+					// 	var options = {
+					// 		series: [{
+					// 			name: 'XYZ MOTORS',
+					// 			data: dates
+					// 		}],
+					// 		chart: {
+					// 			type: 'area',
+					// 			stacked: false,
+					// 			height: 350,
+					// 		zoom: {
+					// 			type: 'x',
+					// 			enabled: true,
+					// 			autoScaleYaxis: true
+					// 		},
+					// 		toolbar: {
+					// 			autoSelected: 'zoom'
+					// 		}
+					// 		},
+					// 		dataLabels: {
+					// 			enabled: false
+					// 		},
+					// 		markers: {
+					// 			size: 0,
+					// 		},
+					// 		title: {
+					// 			text: 'Stock Price Movement',
+					// 			align: 'left'
+					// 		},
+					// 		fill: {
+					// 			type: 'gradient',
+					// 			gradient: {
+					// 				shadeIntensity: 1,
+					// 				inverseColors: false,
+					// 				opacityFrom: 0.5,
+					// 				opacityTo: 0,
+					// 				stops: [0, 90, 100]
+					// 		},
+					// 		},
+					// 		yaxis: {
+					// 		labels: {
+					// 			formatter: function (val) {
+					// 			return (val / 1000000).toFixed(0);
+					// 			},
+					// 		},
+					// 		title: {
+					// 			text: 'Price'
+					// 		},
+					// 		},
+					// 		xaxis: {
+					// 			type: 'datetime',
+					// 		},
+					// 		tooltip: {
+					// 			shared: false,
+					// 		y: {
+					// 			formatter: function (val) {
+					// 			return (val / 1000000).toFixed(0)
+					// 			}
+					// 		}
+					// 	}
+					// };
 						var options = {
-							series: [{
-								name: 'XYZ MOTORS',
-								data: dates
-							}],
 							chart: {
-								type: 'area',
-								stacked: false,
-								height: 350,
-							zoom: {
-								type: 'x',
-								enabled: true,
-								autoScaleYaxis: true
+								type: 'line',
+								height: 350
+							},
+							series: [{	
+								name: 'Example Data',
+								data: phpData
+							}],
+							xaxis: {
+								categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
 							},
 							toolbar: {
-								autoSelected: 'zoom'
-							}
-							},
-							dataLabels: {
-								enabled: false
-							},
-							markers: {
-								size: 0,
-							},
+            					autoSelected: 'zoom'
+          					},
 							title: {
-								text: 'Stock Price Movement',
+								text: 'Laporan KYC',
 								align: 'left'
-							},
-							fill: {
-								type: 'gradient',
-								gradient: {
-									shadeIntensity: 1,
-									inverseColors: false,
-									opacityFrom: 0.5,
-									opacityTo: 0,
-									stops: [0, 90, 100]
-							},
-							},
-							yaxis: {
-							labels: {
-								formatter: function (val) {
-								return (val / 1000000).toFixed(0);
-								},
-							},
-							title: {
-								text: 'Price'
-							},
-							},
-							xaxis: {
-								type: 'datetime',
-							},
-							tooltip: {
-								shared: false,
-							y: {
-								formatter: function (val) {
-								return (val / 1000000).toFixed(0)
-								}
 							}
-						}
-					};
-						// var options = {
-						// 	chart: {
-						// 		type: 'line',
-						// 		height: 350
-						// 	},
-						// 	series: [{	
-						// 		name: 'Example Data',
-						// 		data: phpData
-						// 	}],
-						// 	xaxis: {
-						// 		categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
-						// 	},
-						// 	toolbar: {
-            			// 		autoSelected: 'zoom'
-          				// 	},
-						// 	title: {
-						// 		text: 'Laporan KYC',
-						// 		align: 'left'
-						// 	}
-						// };
+						};
 
 						var chart = new ApexCharts(document.querySelector("#chart"), options);
 						chart.render();
