@@ -1,3 +1,11 @@
+<?php
+// Assume we have fetched data from a database or some other source
+$data = [10, 41, 35, 51, 49, 62, 69, 91, 148];
+
+// Convert the PHP array to JSON
+$jsonData = json_encode($data);
+?>
+
 <link href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css" rel="stylesheet">
 <script src="https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.js" type="text/javascript"></script>
@@ -58,8 +66,30 @@
             <h5>Charts</h5>
         </div>
         <div class="card-body">
-		<H1>Test</H1>
-        </div>
+			<div id="chart"></div>
+				<script>
+					document.addEventListener('DOMContentLoaded', function () {
+						var phpData = <?php echo $jsonData; ?>;
+
+						var options = {
+							chart: {
+								type: 'line',
+								height: 350
+							},
+							series: [{
+								name: 'Example Data',
+								data: phpData
+							}],
+							xaxis: {
+								categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
+							}
+						};
+
+						var chart = new ApexCharts(document.querySelector("#chart"), options);
+						chart.render();
+					});
+				</script>
+			</div>
     </div>
     <div class="card">
         <div class="card-header">
