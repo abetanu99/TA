@@ -1,11 +1,3 @@
-<?php
-// Assume we have fetched data from a database or some other source
-$data = [10, 41, 35, 51, 49, 62, 69, 91, 148];
-
-// Convert the PHP array to JSON
-$jsonData = json_encode($data);
-?>
-
 <link href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css" rel="stylesheet">
 <script src="https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.js" type="text/javascript"></script>
@@ -68,9 +60,7 @@ $jsonData = json_encode($data);
         <div class="card-body">
 			<div id="chart"></div>
 				<script>
-					document.addEventListener('DOMContentLoaded', function () {
-						var phpData = <?php echo $jsonData; ?>;
-						
+					document.addEventListener('DOMContentLoaded', function () {						
 						var options = {
 							series: [{
 								name: 'XYZ MOTORS',
