@@ -53,6 +53,14 @@
         </div>
 
     </div>
+	<div class="card">
+        <div class="card-header">
+            <h5>Charts</h5>
+        </div>
+        <div class="card-body">
+		<H1>Test</H1>
+        </div>
+    </div>
     <div class="card">
         <div class="card-header">
             <h5>Basic Component</h5>
