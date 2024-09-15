@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.5/css/dataTables.dataTables.css" />
     <script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
 
+
+
+    <link rel="stylesheet" type="text/css" href="<?=base_url('assets')?>/assets/icon/font-awesome/css/font-awesome.min.css">
     
     
 </head>
@@ -40,7 +43,6 @@
 	<nav class="pcoded-navbar  ">
 		<div class="navbar-wrapper  ">
 			<div class="navbar-content scroll-div " >
-				
 				<div class="">
 					<div class="main-menu-header">
 						<img class="img-radius" src="<?= base_url('assets/assets/images/user/avatar-2.jpg')?>" alt="User-Profile-Image">
@@ -68,7 +70,7 @@
             <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
             <a href="#!" class="b-brand">
                 <!-- ========   change your logo hear   ============ -->
-                <img src="<?= base_url('assets/assets/images/logo.png')?>" alt="" class="logo">
+                <!-- <img src="<?= base_url('assets/assets/images/logo.png')?>" alt="" class="logo"> -->
                 <img src="<?= base_url('assets/assets/images/logo-icon.png')?>" alt="" class="logo-thumb">
             </a>
             <a href="#!" class="mob-toggler">

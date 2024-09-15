@@ -28,14 +28,17 @@ class Teller extends CI_Controller {
 
 	public function index()
 	{		
+		$awal_tahun =  date('Y').'-01-01';
+		$akhir_tahun =  date('Y').'-12-31';
 		if ($this->session->userdata('login') == 'true'){
-
 			$data['rek'] 		= count($this->model_master->getRek("%"));
-			$data['totTrans'] 	= count($this->model_laporan->totalTrans('2023-01-01','2023-12-31'));
-			$data['totKyc'] 	= count($this->model_laporan->laporanKycHis('2023-01-01','2023-12-31'));
+			$data['totTrans'] 	= count($this->model_laporan->totalTrans($awal_tahun,$akhir_tahun));
+			$data['totKyc'] 	= count($this->model_laporan->laporanKycHis($awal_tahun,$akhir_tahun));
+			$data['top5']		= $this->model_laporan->top5_kycTrans($awal_tahun,$akhir_tahun);
 			// $data['rek'] = $this->model_master->getRek("%");
 			/////////////////////////////pie chart///////////////////////////////////////
-			$pie = $this->model_laporan->pie('2023-01-01','2023-12-31');
+			$pie = $this->model_laporan->pie($awal_tahun,$akhir_tahun);
+			// print_r($pieKet);
 			$nilaiKet 	= [];
 			$pieKet		= [];
 			for($i=0;$i < count($pie);$i++){
@@ -43,14 +46,16 @@ class Teller extends CI_Controller {
 				$nilai  =  intval($pie[$i]["TOTAL"]);
 				array_push($pieKet,$ket);
 				array_push($nilaiKet,$nilai);
-			}
+			}	
 			if (!in_array("KECIL", $pieKet)){
 				array_push($pieKet,"KECIL");
 				array_push($nilaiKet,0);
-			} else if (!in_array("SEDANG", $pieKet)){
+			} 
+			if (!in_array("SEDANG", $pieKet)){
 				array_push($pieKet,"SEDANG");
 				array_push($nilaiKet,0);
-			} else if (!in_array("BESAR", $pieKet)){
+			}
+			if (!in_array("BESAR", $pieKet)){
 				array_push($pieKet,"BESAR");
 				array_push($nilaiKet,0);
 			}
@@ -60,7 +65,7 @@ class Teller extends CI_Controller {
 
 			////////////////////////////////line chart////////////////////////////////////
 			$bulan = array("1", "2", "3", "4","5","6","7","8","9","10","11","12");
-			$row = $this->model_laporan->nav('2023-01-01','2023-12-31');
+			$row = $this->model_laporan->nav($awal_tahun,$akhir_tahun);
 			$main = [];
 			$i=0;
 			$x=0;
@@ -84,12 +89,6 @@ class Teller extends CI_Controller {
 			$this->login();
 		}
 	}
-
-	public function nav()
-	{		
-		
-		print_r($main);
-	}
 	public function Login()
 	{
 		if (isset($_POST['user']) || isset($_POST['pass'])) {
@@ -108,4 +107,5 @@ class Teller extends CI_Controller {
 		$this->session->unset_userdata('login');
 		$this->login();
 	}
+	
 }

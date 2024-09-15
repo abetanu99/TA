@@ -23,11 +23,11 @@ $jsonData = json_encode($data);
         <div class="row align-items-center">
             <div class="col-md-12">
                 <div class="page-header-title">
-                    <h5 class="m-b-10">Dashboard Analytics</h5>
+                    <h5 class="m-b-10">Laporan KYC</h5>
                 </div>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
-                    <li class="breadcrumb-item"><a href="#!">Dashboard Analytics</a></li>
+                    <li class="breadcrumb-item"><a href="#!">Laporan KYC</a></li>
                 </ul>
             </div>
         </div>
@@ -37,7 +37,7 @@ $jsonData = json_encode($data);
 <div class="col-sm-12">
     <div class="card">
         <div class="card-header">
-            <h5>Basic Component</h5>
+            <h5>Range Date</h5>
         </div>
         <div class="card-body">
             <div class="form-group row">
@@ -61,106 +61,17 @@ $jsonData = json_encode($data);
         </div>
 
     </div>
-	<div class="card">
-        <div class="card-header">
-            <h5>Charts</h5>
+        <div class="card">
+            <div class="card-header">
+                <h5 id=chartName>Line Chart</h5>
+            </div>
+            <div class="card-body">
+                <div id="line-chart-1" style="width:100%"></div>
+            </div>
         </div>
-        <div class="card-body">
-			<div id="chart"></div>
-				<script>
-					document.addEventListener('DOMContentLoaded', function () {
-						var phpData = <?php echo $jsonData; ?>;
-						
-					// 	var options = {
-					// 		series: [{
-					// 			name: 'XYZ MOTORS',
-					// 			data: dates
-					// 		}],
-					// 		chart: {
-					// 			type: 'area',
-					// 			stacked: false,
-					// 			height: 350,
-					// 		zoom: {
-					// 			type: 'x',
-					// 			enabled: true,
-					// 			autoScaleYaxis: true
-					// 		},
-					// 		toolbar: {
-					// 			autoSelected: 'zoom'
-					// 		}
-					// 		},
-					// 		dataLabels: {
-					// 			enabled: false
-					// 		},
-					// 		markers: {
-					// 			size: 0,
-					// 		},
-					// 		title: {
-					// 			text: 'Stock Price Movement',
-					// 			align: 'left'
-					// 		},
-					// 		fill: {
-					// 			type: 'gradient',
-					// 			gradient: {
-					// 				shadeIntensity: 1,
-					// 				inverseColors: false,
-					// 				opacityFrom: 0.5,
-					// 				opacityTo: 0,
-					// 				stops: [0, 90, 100]
-					// 		},
-					// 		},
-					// 		yaxis: {
-					// 		labels: {
-					// 			formatter: function (val) {
-					// 			return (val / 1000000).toFixed(0);
-					// 			},
-					// 		},
-					// 		title: {
-					// 			text: 'Price'
-					// 		},
-					// 		},
-					// 		xaxis: {
-					// 			type: 'datetime',
-					// 		},
-					// 		tooltip: {
-					// 			shared: false,
-					// 		y: {
-					// 			formatter: function (val) {
-					// 			return (val / 1000000).toFixed(0)
-					// 			}
-					// 		}
-					// 	}
-					// };
-						var options = {
-							chart: {
-								type: 'line',
-								height: 350
-							},
-							series: [{	
-								name: 'Example Data',
-								data: phpData
-							}],
-							xaxis: {
-								categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
-							},
-							toolbar: {
-            					autoSelected: 'zoom'
-          					},
-							title: {
-								text: 'Laporan KYC',
-								align: 'left'
-							}
-						};
-
-						var chart = new ApexCharts(document.querySelector("#chart"), options);
-						chart.render();
-					});
-				</script>
-			</div>
-    </div>
     <div class="card">
         <div class="card-header">
-            <h5>Basic Component</h5>
+            <h5>Report</h5>
         </div>
         <div class="card-body">
             <table class="table " style="width:100%" id="laporan_kyc">
@@ -183,11 +94,21 @@ $jsonData = json_encode($data);
     </div>
 </div>
 
+    <!-- vendor chart -->
+    <script src="<?=base_url('assets')?>/assets/js/vendor-all.min.js"></script>
+    <script src="<?=base_url('assets')?>/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="<?=base_url('assets')?>/assets/js/pcoded.min.js"></script>
+    <script src="<?=base_url('assets')?>/assets/js/plugins/apexcharts.min.js"></script>
+    <script src="<?=base_url('assets')?>/assets/js/pages/chart-apex.js"></script>
+
 <script> 
 
-    $("#retrive").click(function(){
-        console.log($("[name=tanggal1]").val());
-        console.log($("[name=tanggal2]").val());
+
+    
+
+    $("#retrive").click(function(){       
+        const d = new Date($("[name=tanggal2]").val()); 
+        $("#chartName").html("Line Chart "+d.getFullYear());
         $.ajax({
             type: "GET",
             url: "<?php echo site_url()?>"+"/LaporanTeller/laporanKyc?tgl1="+$("[name=tanggal1]").val()+"&tgl2="+$("[name=tanggal2]").val(),
@@ -196,17 +117,63 @@ $jsonData = json_encode($data);
                 setLaporan(response);
             }
         });
+        
+        $.ajax({
+            type: "GET",
+            url: "<?php echo site_url()?>"+"/LaporanTeller/linechart/"+d.getFullYear(),
+            success: function(response){
+                response = JSON.parse(response)
+                setChart(response)
+            }
+        });
     });
-    // console.log($("[name=tanggal1]").val());
-    //     console.log($("[name=tanggal2]").val());
-    //     $.ajax({
-    //         type: "GET",
-    //         url: "<?php //echo site_url()?>"+"/LaporanTeller/laporanKyc?tgl1="+$("[name=tanggal1]").val()+"&tgl2="+$("[name=tanggal2]").val(),
-    //         success: function(response){
-    //             response = JSON.parse(response)
-    //             setLaporan(response);
-    //         }
-    //     });
+
+    function setChart(data){
+        setTimeout(function() {
+        $(function() {
+            var options = {
+                chart: {
+                    height: 300,
+                    type: 'line',
+                    zoom: {
+                        enabled: false
+                    }
+                },
+                dataLabels: {
+                    enabled: false,
+                    width: 2,
+                },
+                stroke: {
+                    curve: 'straight',
+                },
+                colors: ["#1abc9c"],
+                series: [{
+                    name: "Desktops",
+                    data: data
+                }],
+                title: {
+                    text: 'TPPU Customer by Month',
+                    align: 'left'
+                },
+                grid: {
+                    row: {
+                        colors: ['#f3f6ff', 'transparent'], // takes an array which will be repeated on columns
+                        opacity: 0.5
+                    },
+                },
+                xaxis: {
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Okt' , 'Nov' , 'Des'],
+                }
+            }
+
+            var chart = new ApexCharts(
+                document.querySelector("#line-chart-1"),
+                options
+            );
+            chart.render();
+        });
+        }, 700); 
+    }
 
     function setLaporan(data){
         var table = [];

@@ -9,8 +9,8 @@ class Model_Login extends CI_Model
         parent::__construct();
     }
 
-    public function getUser($userid)
+    public function getUser($userid,$pass)
     {
-            return $this->db->query("SELECT * FROM MUSER WHERE USERID = '".$userid."'")->RESULT_ARRAY();
+            return $this->db->query("SELECT * FROM MUSER WHERE USERID = '".$userid."' AND PASSWORD = '".$pass."'")->RESULT_ARRAY();
     }
 }

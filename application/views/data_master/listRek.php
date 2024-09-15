@@ -4,11 +4,11 @@
         <div class="row align-items-center">
             <div class="col-md-12">
                 <div class="page-header-title">
-                    <h5 class="m-b-10">Dashboard Analytics</h5>
+                    <h5 class="m-b-10">Daftar Rekening</h5>
                 </div>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
-                    <li class="breadcrumb-item"><a href="#!">Dashboard Analytics</a></li>
+                    <li class="breadcrumb-item"><a href="#!">Daftar Rekening</a></li>
                 </ul>
             </div>
         </div>
@@ -18,7 +18,7 @@
 <div class="col-sm-12">
     <div class="card">
         <div class="card-header">
-            <h5>Basic Component</h5>
+            <h5>Daftar Rekening</h5>
         </div>
         <div class="card-body">
         <table class="table" id="listRek">

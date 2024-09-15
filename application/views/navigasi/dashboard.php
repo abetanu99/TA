@@ -119,7 +119,7 @@
     <div class="col-xl-6 col-md-12">
         <div class="card table-card">
             <div class="card-header">
-                <h5>Projects</h5>
+                <h5>Top five transactions</h5>
                 <div class="card-header-right">
                     <div class="btn-group card-option">
                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -140,114 +140,48 @@
                         <thead>
                             <tr>
                                 <th>
-                                    <div class="chk-option">
+                                    <!-- <div class="chk-option">
                                         <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
                                             <input type="checkbox" class="custom-control-input">
                                             <span class="custom-control-label"></span>
                                         </label>
-                                    </div>
-                                    Assigned
+                                    </div> -->
+                                    Nama
                                 </th>
-                                <th>Name</th>
-                                <th>Due Date</th>
-                                <th class="text-right">Priority</th>
+                                <th>Rekening</th>
+                                <th>Nilai</th>
+                                <th class="text-right">Kategori</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach($top5 as $trans) {?>
                             <tr>
                                 <td>
-                                    <div class="chk-option">
+                                    <!-- <div class="chk-option">
                                         <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
                                             <input type="checkbox" class="custom-control-input">
                                             <span class="custom-control-label"></span>
                                         </label>
-                                    </div>
+                                    </div> -->
                                     <div class="d-inline-block align-middle">
                                         <!-- <img src="assets/images/user/avatar-4.jpg" alt="user image" class="img-radius wid-40 align-top m-r-15"> -->
                                         <div class="d-inline-block">
-                                            <h6>John Deo</h6>
-                                            <p class="text-muted m-b-0">Graphics Designer</p>
+                                            <h6><?php echo $trans["ALIASNM"]?></h6>
                                         </div>
                                     </div>
                                 </td>
-                                <td>Able Pro</td>
-                                <td>Jun, 26</td>
-                                <td class="text-right"><label class="badge badge-light-danger">Low</label></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="chk-option">
-                                        <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
-                                            <input type="checkbox" class="custom-control-input">
-                                            <span class="custom-control-label"></span>
-                                        </label>
-                                    </div>
-                                    <div class="d-inline-block align-middle">
-                                        <!-- <img src="assets/images/user/avatar-2.jpg" alt="user image" class="img-radius wid-40 align-top m-r-15"> -->
-                                        <div class="d-inline-block">
-                                            <h6>Jenifer Vintage</h6>
-                                            <p class="text-muted m-b-0">Web Designer</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Mashable</td>
-                                <td>March, 31</td>
-                                <td class="text-right"><label class="badge badge-light-primary">high</label></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="chk-option">
-                                        <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
-                                            <input type="checkbox" class="custom-control-input">
-                                            <span class="custom-control-label"></span>
-                                        </label>
-                                    </div>
-                                    <div class="d-inline-block align-middle">
-                                        <!-- <img src="assets/images/user/avatar-3.jpg" alt="user image" class="img-radius wid-40 align-top m-r-15"> -->
-                                        <div class="d-inline-block">
-                                            <h6>William Jem</h6>
-                                            <p class="text-muted m-b-0">Developer</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Flatable</td>
-                                <td>Aug, 02</td>
-                                <td class="text-right"><label class="badge badge-light-success">medium</label></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="chk-option">
-                                        <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
-                                            <input type="checkbox" class="custom-control-input">
-                                            <span class="custom-control-label"></span>
-                                        </label>
-                                    </div>
-                                    <div class="d-inline-block align-middle">
-                                        <!-- <img src="assets/images/user/avatar-2.jpg" alt="user image" class="img-radius wid-40 align-top m-r-15"> -->
-                                        <div class="d-inline-block">
-                                            <h6>David Jones</h6>
-                                            <p class="text-muted m-b-0">Developer</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Guruable</td>
-                                <td>Sep, 22</td>
-                                <td class="text-right"><label class="badge badge-light-primary">high</label></td>
-                            </tr>
+                                <td><?php echo $trans["NOAC"]?></td>
+                                <td><?php echo $trans["NILAI"]?></td>
+                                <td class="text-right"><label class="badge badge-light-danger"><?php echo $trans["KET_KATEGORI"]?></label></td>
+                            </tr> 
+                            <?php }?>     
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-<script src="<?=base_url('assets')?>/assets/js/vendor-all.min.js"></script>
-<script src="<?=base_url('assets')?>/assets/js/plugins/bootstrap.min.js"></script>
-<script src="<?=base_url('assets')?>/assets/js/pcoded.min.js"></script>
 
-<script src="<?=base_url('assets')?>/assets/js/plugins/apexcharts.min.js"></script>
-<script src="<?=base_url('assets')?>/assets/js/pages/chart-apex.js"></script>
-
-<link rel="stylesheet" type="text/css" href="<?=base_url('assets')?>/assets/icon/font-awesome/css/font-awesome.min.css">
 
 <script>
 
@@ -323,165 +257,7 @@ $(document).ready(function() {
             chart.render();
         });
 
-        // $(function() {
-        //     var options = {
-        //         chart: {
-        //             height: 350,
-        //             type: 'area',
-        //         },
-        //         dataLabels: {
-        //             enabled: false
-        //         },
-        //         stroke: {
-        //             curve: 'smooth'
-        //         },
-        //         colors: ["#f1c40f", "#e74c3c"],
-        //         series: [{
-        //             name: 'series1',
-        //             data: [31, 40, 28, 51, 42, 109, 100]
-        //         }, {
-        //             name: 'series2',
-        //             data: [11, 32, 45, 32, 34, 52, 41]
-        //         }],
-
-        //         xaxis: {
-        //             type: 'datetime',
-        //             categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00"],
-        //         },
-        //         tooltip: {
-        //             x: {
-        //                 format: 'dd/MM/yy HH:mm'
-        //             },
-        //         }
-        //     }
-
-        //     var chart = new ApexCharts(
-        //         document.querySelector("#area-chart-1"),
-        //         options
-        //     );
-
-        //     chart.render();
-        // });
         
-		
-        // $(function() {
-        //     var options = {
-        //         chart: {
-        //             height: 350,
-        //             type: 'bar',
-        //         },
-        //         plotOptions: {
-        //             bar: {
-        //                 horizontal: false,
-        //                 columnWidth: '55%',
-        //                 endingShape: 'rounded'
-        //             },
-        //         },
-        //         dataLabels: {
-        //             enabled: false
-        //         },
-        //         colors: ["#0e9e4a", "#1abc9c", "#e74c3c"],
-        //         stroke: {
-        //             show: true,
-        //             width: 2,
-        //             colors: ['transparent']
-        //         },
-        //         series: [{
-        //             name: 'Net Profit',
-        //             data: [44, 55, 57, 56, 61, 58, 63]
-        //         }, {
-        //             name: 'Revenue',
-        //             data: [76, 85, 101, 98, 87, 105, 91]
-        //         }, {
-        //             name: 'Free Cash Flow',
-        //             data: [35, 41, 36, 26, 45, 48, 52]
-        //         }],
-        //         xaxis: {
-        //             categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-        //         },
-        //         yaxis: {
-        //             title: {
-        //                 text: '$ (thousands)'
-        //             }
-        //         },
-        //         fill: {
-        //             opacity: 1
-
-        //         },
-        //         tooltip: {
-        //             y: {
-        //                 formatter: function(val) {
-        //                     return "$ " + val + " thousands"
-        //                 }
-        //             }
-        //         }
-        //     }
-        //     var chart = new ApexCharts(
-        //         document.querySelector("#bar-chart-1"),
-        //         options
-        //     );
-        //     chart.render();
-        // });
-        // $(function() {
-        //     var options = {
-        //         chart: {
-        //             height: 350,
-        //             type: 'bar',
-        //             stacked: true,
-        //             toolbar: {
-        //                 show: true
-        //             },
-        //             zoom: {
-        //                 enabled: true
-        //             }
-        //         },
-        //         colors: ["#1abc9c", "#0e9e4a", "#f1c40f", "#e74c3c"],
-        //         responsive: [{
-        //             breakpoint: 480,
-        //             options: {
-        //                 legend: {
-        //                     position: 'bottom',
-        //                     offsetX: -10,
-        //                     offsetY: 0
-        //                 }
-        //             }
-        //         }],
-        //         plotOptions: {
-        //             bar: {
-        //                 horizontal: false,
-        //             },
-        //         },
-        //         series: [{
-        //             name: 'PRODUCT A',
-        //             data: [44, 55, 41, 67, 22, 43]
-        //         }, {
-        //             name: 'PRODUCT B',
-        //             data: [13, 23, 20, 8, 13, 27]
-        //         }, {
-        //             name: 'PRODUCT C',
-        //             data: [11, 17, 15, 15, 21, 14]
-        //         }, {
-        //             name: 'PRODUCT D',
-        //             data: [21, 7, 25, 13, 22, 8]
-        //         }],
-        //         xaxis: {
-        //             type: 'datetime',
-        //             categories: ['01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT', '01/04/2011 GMT', '01/05/2011 GMT', '01/06/2011 GMT'],
-        //         },
-        //         legend: {
-        //             position: 'right',
-        //             offsetY: 40
-        //         },
-        //         fill: {
-        //             opacity: 1
-        //         },
-        //     }
-        //     var chart = new ApexCharts(
-        //         document.querySelector("#bar-chart-2"),
-        //         options
-        //     );
-        //     chart.render();
-        // });
             console.log(<?php print_r($pieKet) ?>);
             console.log(<?php print_r($nilaiKet) ?>);
 		$(function() {
@@ -517,56 +293,7 @@ $(document).ready(function() {
                 options
             );
             chart.render();
-        });
-        // $(function() {
-        //     var options = {
-        //         chart: {
-        //             height: 320,
-        //             type: 'donut',
-        //         },
-        //         series: [44, 55, 41, 17, 15],
-        //         colors: ["#1abc9c", "#0e9e4a", "#00acc1", "#f1c40f", "#e74c3c"],
-        //         legend: {
-        //             show: true,
-        //             position: 'bottom',
-        //         },
-        //         plotOptions: {
-        //             pie: {
-        //                 donut: {
-        //                     labels: {
-        //                         show: true,
-        //                         name: {
-        //                             show: true
-        //                         },
-        //                         value: {
-        //                             show: true
-        //                         }
-        //                     }
-        //                 }
-        //             }
-        //         },
-        //         dataLabels: {
-        //             enabled: true,
-        //             dropShadow: {
-        //                 enabled: false,
-        //             }
-        //         },
-        //         responsive: [{
-        //             breakpoint: 480,
-        //             options: {          
-        //                 legend: {
-        //                     position: 'bottom'
-        //                 }
-        //             }
-        //         }]
-        //     }
-        //     var chart = new ApexCharts(
-        //         document.querySelector("#pie-chart-2"),
-        //         options
-        //     );
-        //     chart.render();
-        // });
-    
+        });    
 	}, 700);
 });
 

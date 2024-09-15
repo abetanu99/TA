@@ -4,11 +4,11 @@
         <div class="row align-items-center">
             <div class="col-md-12">
                 <div class="page-header-title">
-                    <h5 class="m-b-10">Dashboard Analytics</h5>
+                    <h5 class="m-b-10">Transaksi Teller</h5>
                 </div>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
-                    <li class="breadcrumb-item"><a href="#!">Dashboard Analytics</a></li>
+                    <li class="breadcrumb-item"><a href="#!">Transaksi Teller</a></li>
                 </ul>
             </div>
         </div>
@@ -24,7 +24,7 @@
     <form method="POST" id="myForm"  action="<?= site_url('/TransTeller/save_trans_teller') ?>">
         <div class="card">
             <div class="card-header">
-                <h5>Basic Component</h5>
+                <h5>Opsi Transaksi</h5>
             </div>
             <div class="card-body">
                 <div class="form-group row">

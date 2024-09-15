@@ -48,4 +48,32 @@ class LaporanTeller extends CI_Controller {
 		print_r(json_encode($rek));
 	} 
 
+	public function linechart($tahun)
+	{
+		$awal_tahun =  $tahun.'-01-01';
+		$akhir_tahun =  $tahun.'-12-31';
+
+		$bulan = array("1", "2", "3", "4","5","6","7","8","9","10","11","12");
+		$row = $this->model_laporan->nav($awal_tahun,$akhir_tahun);
+		$main = [];
+		$i=0;
+		$x=0;
+		for($i=0;$i < count($bulan);$i++){
+			if (count($row) > 0 ) {
+				if ($bulan[$i] == intval($row[$x]["BULAN"])){
+					$total = $row[$x]["TOTAL"];
+					if(count($row) - 1 > $x){
+						$x++;
+					}	
+				}else{
+					$total = 0;
+				}
+			} else {
+				$total = 0;
+			}
+			array_push($main,$total);
+		}
+		print_r(json_encode($main));
+	}
+
 }
